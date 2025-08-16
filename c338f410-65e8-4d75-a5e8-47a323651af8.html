@@ -1,0 +1,268 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>Strike Vector</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+  height: 48px;
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+	height: 48px;
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, #24282f, rgba(100,100,100,0.73))">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button> Strike Vector</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Details</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />							<TR>
+								<TD>Playtime</TD>
+								<TD>1h 48m 0s</TD>
+							</TR>
+							<TR>
+								<TD>Last Activity</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_lastactivity_descending_name_ascending.html#quicklink-03/01/2019">03/01/2019</a> 21:37:28</TD>
+							</TR>
+							<TR>
+								<TD>Added</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_added_descending_name_ascending.html#quicklink-02/06/2025">02/06/2025</a> 12:50:31</TD>
+							</TR>
+							<TR>
+								<TD>Modified</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_modified_descending_name_ascending.html#quicklink-02/06/2025">02/06/2025</a> 13:02:38</TD>
+							</TR>
+							<TR>
+								<TD>Completion Status</TD>
+								<TD><a href="default%20list%20text_completionstatus_ascending_name_ascending.html#quicklink-Played">Played</a></TD>
+							</TR>
+							<TR>
+								<TD>Library</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_library_ascending_name_ascending.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>Source</TD>
+								<TD><a href="default%20list%20text_source_ascending_name_ascending.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>Platform</TD>
+								<TD></TD>
+							</TR>
+							<TR>
+								<TD>Release Date</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_releasedate_descending_name_ascending.html#quicklink-28/01/2014">28/01/2014</a> </TD>
+							</TR>
+							<TR>
+								<TD>Community Score</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_communityscore_descending_name_ascending.html#quicklink-50">50</a></TD>
+							</TR>
+							<TR>
+								<TD>Critic Score</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_criticscore_descending_name_ascending.html#quicklink-74">74</a></TD>
+							</TR>
+							<TR>
+								<TD>User Score</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_userscore_descending_name_ascending.html#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Genre</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_genre_ascending_name_ascending.html#quicklink-Indie">Indie</a><br/><a href="default%20list%20text%20combobox%20quicklinks_genre_ascending_name_ascending.html#quicklink-Shooter">Shooter</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Developer</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_developer_ascending_name_ascending.html#quicklink-Ragequit Corporation">Ragequit Corporation</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Publisher</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_publisher_ascending_name_ascending.html#quicklink-Ragequit Corporation">Ragequit Corporation</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Feature</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_feature_ascending_name_ascending.html#quicklink-Multiplayer">Multiplayer</a><br/><a href="default%20list%20text%20combobox%20quicklinks_feature_ascending_name_ascending.html#quicklink-Single Player">Single Player</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Links</TD>
+								<TD><a href="http://strike-vector.wikia.com/wiki/Strike_Vector_Wiki" target="_blank">Wikia</a><br/><a href="https://store.steampowered.com/app/246700" target="_blank">Steam</a><br/><a href="http://www.strikevector.net" target="_blank">Official</a><br/><a href="https://www.twitch.tv/directory/game/Strike%20Vector" target="_blank">Twitch</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Description</H3>
+				</div>
+				<div class="description">
+					&quot;Strike Vector is gorgeous shooter with strong mechanics and lots of customisation&quot; <br><strong>7.7/10 – IGN</strong><br><br>&quot;it more than makes up for by being a gorgeous, intensely competitive experience that matches its aesthetic appeal with pure shooter satisfaction&quot;<br>– <strong>7.5/10 –destructoid</strong><br><br>&quot;Strike Vector does one thing - frantic multiplayer combat action - and does it really well&quot; Luke Plunkett<br>– <strong>Kotaku</strong><br><br>&quot;I do, however, know one thing for sure: Strike Vector The Videogame is unarguably stunning&quot; Nathan Grayson<br>– <strong>Rockpapershotgun</strong><br><br> “Strike Vector est la petite bombe indépendante sans prétention que l’on ne voyait pas venir” <br><strong>17/20 – </strong><br><br>“BELLISSIMO, Strike Vector è uno sparatutto indipendente adrenalinico, appagante e assolutamente spaziale. In tutti i sensi” <br><strong>9.2/10 – IGN.it</strong><br><br>&quot;Amateur de sensations fortes, à vos souris. Si vous cherchiez du Quake en altitude, de l'instagib en vaisseau spatial, le titre qu'il vous faut est enfin dispo : ça s'appelle Strike Vector et c'est pour les joueurs hardcore dont l'estomac est bien accroché&quot;<br><strong>4/5 – gameblog.fr</strong><br><br><br><br><strong>Strike Vector</strong> is a Brutal aerial FPS that will see you test your skills online against other players in the tradition of Quake 3 and Unreal Tournament. The game offers an hardcore learning curve for those who don't fear to die a lot at first but who will get a massive rewarding feeling when they will master the game and dominate the battlefield.<h2 class="bb_tag"><h2 class="bb_tag">all New Features Will Be Free</h2></h2>Ragequit Corporation will offer free downloadable content after the game release. We want to make sure that every person playing Strike Vector have access to the same content regardless of when they will get the game.<h2 class="bb_tag"><h2 class="bb_tag">gameplay</h2></h2>With a distinct old school feel, reminiscent to games such as Crimson Skies, Quake 3 and Unreal Tournament, Strike Vector will let you test your reflexes and skills against your friends. Team flight and mutual assistance is required to fulfill your missions but individual aiming and piloting skills are also mandatory.<h2 class="bb_tag"><h2 class="bb_tag">two Movement Modes</h2></h2>You fly the Vector, the lastest hyper-speed VTOL, highly customizable and manoeuvrable Jet fighter. Your enhanced version can instantly switch between 2 movement modes :<br><br><ul class="bb_ul"><li> Jet Mode: reach high-speed, intercept opponents and fast evade incoming projectiles.<br></li><li> Stationary Mode: strafe in all directions with increased precision, hold and defend key locations.</li></ul><br><br>This unique gameplay allow you to fight face to face with your enemies like classical FPS, or playing dog fighting.<h2 class="bb_tag"><h2 class="bb_tag">game Modes</h2></h2>Targets to reach, positions to defend, enemy structures to destroy … Players may select among famous game modes such as deathmatch, team domination, team deathmatch, and Bounty Hunter! More game modes are coming soon!<h2 class="bb_tag"><h2 class="bb_tag">build Your Own vector</h2></h2>Equip your Vector in your own style with two differents weapons to get the edge on various situations or be a specialist by choosing the same weapon for each side of the craft. Hundreds of combinations are available, making your ship the only kind of his genre on the battlefield.<br><br>Depending on your weapons and perks choice, your playstyle will be different from another player, you create your own class :<br><br><ul class="bb_ul"><li> Fast and stealthy to capture positions and hide in massive structure to surprise your enemies.</li></ul><br><ul class="bb_ul"><li> Heavy and powerful to defend strategic points or assault enemies defenses.</li></ul><br>Customize your ship appearance among various type of skin decorations and put a gadget in your cockpit to make you feel like you are at home. A mach 3 home!<h2 class="bb_tag"><h2 class="bb_tag">varied Environments</h2></h2>You will play through gigantic flying structure like aerial oil platforms, slums, cities, factories, abandonned stations and much more and find many destructible objects like giant cargos or pressure vessels and use them to trap players in deadly explosions, block or open passages and fulfill your mission objectives.<br>Use your environment to avoid and escape homing missiles by adopting a risky flying style. Play the way you want with various game mode adapted for a 360° warfare<br>Eliminate every players in classic deathmatch, support your team in domination or the greedier and more...<br><br>STRIKE VECTOR FORUM : <br>STRIKE VECTOR OST : 
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

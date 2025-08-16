@@ -1,0 +1,268 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>Deliver Us The Moon</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+  height: 48px;
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+	height: 48px;
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, #24282f, rgba(100,100,100,0.73))">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button> Deliver Us The Moon</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Details</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />							<TR>
+								<TD>Playtime</TD>
+								<TD>6h 32m 0s</TD>
+							</TR>
+							<TR>
+								<TD>Last Activity</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_lastactivity_descending_name_ascending.html#quicklink-04/06/2023">04/06/2023</a> 19:44:09</TD>
+							</TR>
+							<TR>
+								<TD>Added</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_added_descending_name_ascending.html#quicklink-02/06/2025">02/06/2025</a> 12:50:32</TD>
+							</TR>
+							<TR>
+								<TD>Modified</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_modified_descending_name_ascending.html#quicklink-02/06/2025">02/06/2025</a> 13:09:41</TD>
+							</TR>
+							<TR>
+								<TD>Completion Status</TD>
+								<TD><a href="default%20list%20text_completionstatus_ascending_name_ascending.html#quicklink-Played">Played</a></TD>
+							</TR>
+							<TR>
+								<TD>Library</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_library_ascending_name_ascending.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>Source</TD>
+								<TD><a href="default%20list%20text_source_ascending_name_ascending.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>Platform</TD>
+								<TD></TD>
+							</TR>
+							<TR>
+								<TD>Release Date</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_releasedate_descending_name_ascending.html#quicklink-10/10/2019">10/10/2019</a> </TD>
+							</TR>
+							<TR>
+								<TD>Community Score</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_communityscore_descending_name_ascending.html#quicklink-79">79</a></TD>
+							</TR>
+							<TR>
+								<TD>Critic Score</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_criticscore_descending_name_ascending.html#quicklink-78">78</a></TD>
+							</TR>
+							<TR>
+								<TD>User Score</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_userscore_descending_name_ascending.html#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Genre</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_genre_ascending_name_ascending.html#quicklink-Adventure">Adventure</a><br/><a href="default%20list%20text%20combobox%20quicklinks_genre_ascending_name_ascending.html#quicklink-Indie">Indie</a><br/><a href="default%20list%20text%20combobox%20quicklinks_genre_ascending_name_ascending.html#quicklink-Puzzle">Puzzle</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Developer</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_developer_ascending_name_ascending.html#quicklink-KeokeN Interactive">KeokeN Interactive</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Publisher</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_publisher_ascending_name_ascending.html#quicklink-Wired Productions">Wired Productions</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Feature</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_feature_ascending_name_ascending.html#quicklink-Single Player">Single Player</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Links</TD>
+								<TD><a href="https://www.facebook.com/deliverusthemoon" target="_blank">Facebook</a><br/><a href="http://twitter.com/deliverthemoon" target="_blank">Twitter</a><br/><a href="https://www.deliverusthemoon.com/" target="_blank">Official</a><br/><a href="https://store.steampowered.com/app/428660/Deliver_Us_The_Moon/" target="_blank">Steam</a><br/><a href="https://www.gog.com/game/deliver_us_the_moon" target="_blank">GOG</a><br/><a href="https://www.epicgames.com/store/en-US/p/deliver-us-the-moon" target="_blank">Epic</a><br/><a href="https://www.reddit.com/r/WiredP/" target="_blank">Reddit</a><br/><a href="http://discord.gg/wiredp" target="_blank">Discord</a><br/><a href="https://www.twitch.tv/directory/game/Deliver%20Us%20The%20Moon" target="_blank">Twitch</a><br/><a href="https://en.wikipedia.org/wiki/Deliver_Us_the_Moon" target="_blank">Wikipedia</a><br/><a href="https://www.nintendo.com/us/store/products/deliver-us-the-moon-switch/" target="_blank">Uknown</a><br/><a href="https://www.xbox.com/en-us/games/store/deliver-us-the-moon/9NVVSHQ771WG" target="_blank">Uknown</a><br/><a href="https://store.playstation.com/en-us/concept/234692" target="_blank">Uknown</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Description</H3>
+				</div>
+				<div class="description">
+					<br><br>Deliver Us The Moon is a Sci-Fi thriller set in an apocalyptic near future where Earth's natural resources are depleted. In an effort to solve the energy crisis, global powers created the World Space Agency and secured a promising new source of energy on the moon.<br><br>The World Space Agency colonized and operated from the moon until one fateful night all communications with Earth ceased and the energy source was lost. Now, years later, you assume the role of Earth's last astronaut on a do-or-die mission to investigate what happened and save humanity.<br><br><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/428660/extras/keyfeatures-title.png?t=1743082153" /><br>During this adventure, your only companion is a small robot named ASE. Together you will traverse the moon, explore abandoned facilities, gather clues and ultimately uncover the secrets and hidden agendas of those long gone!<br><br>Will you save mankind or be forgotten in the dark abyss of Space?<h2 class="bb_tag"><strong>REAL WORLD THEMES</strong></h2>The narrative focuses on topical issues, like climate change and the depletion of the world’s natural resources<br><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/428660/extras/RealWorldIssues1.gif?t=1743082153" /><h2 class="bb_tag"><strong>MULTIPLE GAMEPLAY STYLES</strong></h2>Experience sequences of 1st and 3rd person play, as Deliver Us The Moon takes you on a genre busting narrative adventure<br><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/428660/extras/MultipleGameplayStyles1_OP.gif?t=1743082153" /><h2 class="bb_tag"><strong>BE AN ASTRONAUT</strong></h2>Launch a rocket from Earth, journey through the WSA space station and explore the open lunar landscape with weightless freedom - by foot, rover or monorail<br><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/428660/extras/BeAnAstronaut2.gif?t=1743082153" /><h2 class="bb_tag"><strong>UNCOVER THE PAST</strong></h2>Ruins of previous lunar missions have many stories and secrets to tell. Use your Astrotool to uncover the history of the lunar colony<br><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/428660/extras/UncoverThePast1_OP.gif?t=1743082153" /><h2 class="bb_tag"><strong>SUIT UP WITH SPACE AGE TECH</strong></h2>With the ASE drone as your sole companion, utilise the greatest technology mankind has to offer from new age space-suits, cutting lasers, rockets and robot arms<br><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/428660/extras/SpaceAgeTech3_OP.gif?t=1743082153" /><h2 class="bb_tag"><strong>SURVIVE HAZARDOUS ENVIRONMENTS</strong></h2>With oxygen tanks running out and the never-ending void of Space staring you down, staying alive won’t be so easy<br><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/428660/extras/HazardousEnvironments2_OP.gif?t=1743082153" /><h2 class="bb_tag"><strong>CRACK THE CODE</strong></h2>Overcome obstacles, dangers blocking your path and uncover the secrets of the past by using various tools and all of your wits to solve intricate puzzles<br><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/428660/extras/CrackTheCode1_OP.gif?t=1743082153" /><h2 class="bb_tag"><strong>FEEL WEIGHTLESS WITH A BREATHTAKING &amp; ATMOSPHERIC SOUNDTRACK</strong></h2>Inspired by the greatest works of Sci-Fi in cinema, Deliver Us The Moon has an awe inspiring soundtrack to rival the movies with three hours of original music<br><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/428660/extras/FeelWeightless1.gif?t=1743082153" /><h2 class="bb_tag"><strong>POWERED BY UNREAL® ENGINE 4</strong></h2>Deliver Us The Moon uses Unreal® Engine 4 to deliver incredible gameplay and stunning graphics<br><br><br><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/428660/extras/reviews-revised-14mb.gif?t=1743082153" /><h2 class="bb_tag">GeForce RTX Recommended Spec:</h2><br>GPU: RTX 2060 or higher.<br>CPU: i3-9100F @3.6GHz<br>RAM: 16GB<br>Settings: RT Epic, DLSS Quality, 1080p. Max Settings.<br>Win 10 OS: RS5 or newer
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
